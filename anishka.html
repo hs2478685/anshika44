@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Anishka</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff3fb;
+      --card: #ffffffaa;
+      --accent: #ff7eb6;
+      --accent2: #7afcff;
+      --accent3: #ffd166;
+      --text: #2b2b2b;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Montserrat', system-ui, sans-serif;
+      background: linear-gradient(120deg, var(--bg), #f3f7ff);
+      color: var(--text);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .brand .logo {
+      font-family: 'Pacifico', cursive;
+      color: var(--accent);
+      font-size: 22px;
+      transition: transform 0.3s ease;
+    }
+    
+    .brand:hover .logo {
+      transform: scale(1.1);
+    }
+    
+    .brand div {
+      font-size: 13px;
+      color: rgba(0,0,0,0.45);
+    }
+    
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: rgba(0,0,0,0.6);
+      font-weight: 600;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+      font-size: 14px;
+    }
+    
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover {
+      color: var(--accent);
+    }
+    
+    nav a:hover:after {
+      width: 100%;
+    }
+    
+    main {
+      padding-top: 70px;
+    }
+    
+    section {
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    /* Home Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .hero-card {
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    
+    .hb {
+      font-family: 'Pacifico', cursive;
+      font-size: 42px;
+      line-height: 1;
+      color: var(--accent);
+      text-shadow: 0 6px 30px rgba(255,126,182,0.12);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .sub {
+      font-size: 16px;
+      color: rgba(0,0,0,0.6);
+      margin-top: 10px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    
+    .audio-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+    }
+    
+    .play-btn {
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255,126,182,0.3);
+      font-size: 16px;
+      width: 100%;
+      max-width: 250px;
+    }
+    
+    .play-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255,126,182,0.4);
+    }
+    
+    /* Home Section Slideshow */
+    .home-slideshow {
+      width: 100%;
+      max-width: 360px;
+      height: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    
+    .home-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    
+    .home-slide.active {
+      opacity: 1;
+    }
+    
+    .home-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .home-slide-caption {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      right: 15px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+      text-align: center;
+    }
+    
+    .home-slide-nav {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+    
+    .home-slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .home-slide-dot.active {
+      background: white;
+      transform: scale(1.2);
+    }
+    
+    .home-slide-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--accent);
+    }
+    
+    .home-slide-arrow:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .home-slide-arrow.prev {
+      left: 10px;
+    }
+    
+    .home-slide-arrow.next {
+      right: 10px;
+    }
+    
+    /* Countdown */
+    .countdown {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      background: rgba(255,255,255,0.7);
+      padding: 12px;
+      border-radius: 10px;
+      min-width: 70px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    
+    .countdown-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    
+    .countdown-label {
+      font-size: 11px;
+      color: rgba(0,0,0,0.6);
+      margin-top: 5px;
+    }
+    
+    /* Photos Section */
+    .photos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .photos-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    
+    .photos-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .video-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .video-wrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .video-caption {
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+      color: rgba(0,0,0,0.6);
+      font-size: 14px;
+    }
+    
+    .photos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .photo-slot {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .photo-slot:hover {
+      transform: translateY(-5px);
+    }
+    
+    .photo-slot img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .photo-caption {
+      padding: 12px;
+      font-size: 14px;
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+    }
+    
+    /* Wish Section */
+    .wish-card {
+      width: 100%;
+      max-width: 1000px;
+      background: linear-gradient(180deg, #fff, #fff0);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    
+    .wish-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent3), var(--accent));
+      border-radius: 14px 14px 0 0;
+    }
+    
+    .wish-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    
+    .wish-area {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 12px;
+      padding: 15px;
+      border: 2px dashed rgba(0,0,0,0.06);
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+    
+    .wish-area:focus {
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.8);
+      outline: none;
+    }
+    
+    /* Floating elements */
+    .floating {
+      position: absolute;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    
+    .floating.heart {
+      font-size: 20px;
+      color: var(--accent);
+      animation: float-heart 8s ease-in-out infinite;
+    }
+    
+    .floating.star {
+      font-size: 16px;
+      color: var(--accent3);
+      animation: float-star 10s ease-in-out infinite;
+    }
+    
+    .floating.circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--accent2);
+      animation: float-circle 12s ease-in-out infinite;
+    }
+    
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(0,0,0,0.6);
+      margin-top: 40px;
+    }
+    
+    .pulse {
+      display: inline-block;
+      animation: pulse 1.6s infinite;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+    
+    @keyframes float-heart {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(10deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+    
+    @keyframes float-star {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+    
+    @keyframes float-circle {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    
+    .hero-card {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Desktop Styles */
+    @media (min-width: 768px) {
+      header {
+        padding: 18px 28px;
+      }
+      
+      .brand .logo {
+        font-size: 26px;
+      }
+      
+      .brand div {
+        font-size: 15px;
+      }
+      
+      nav {
+        gap: 20px;
+      }
+      
+      nav a {
+        font-size: 16px;
+      }
+      
+      main {
+        padding-top: 86px;
+      }
+      
+      section {
+        padding: 60px 30px;
+      }
+      
+      .hero {
+        flex-direction: row;
+        gap: 40px;
+      }
+      
+      .hero-card {
+        flex-direction: row;
+        padding: 40px;
+        gap: 35px;
+        max-width: 1200px;
+      }
+      
+      .hb {
+        font-size: 60px;
+        text-align: left;
+      }
+      
+      .sub {
+        font-size: 18px;
+        text-align: left;
+      }
+      
+      .audio-wrap {
+        align-items: flex-start;
+      }
+      
+      .play-btn {
+        width: auto;
+      }
+      
+      .home-slideshow {
+        margin-top: 0;
+        max-width: 360px;
+        height: 360px;
+      }
+      
+      .countdown {
+        gap: 15px;
+      }
+      
+      .countdown-item {
+        min-width: 80px;
+        padding: 15px;
+      }
+      
+      .countdown-value {
+        font-size: 24px;
+      }
+      
+      .countdown-label {
+        font-size: 12px;
+      }
+      
+      .photos-container {
+        gap: 30px;
+      }
+      
+      .photos-title {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      
+      .photos-content {
+        flex-direction: row;
+        gap: 30px;
+      }
+      
+      .video-container {
+        flex: 1.5;
+      }
+      
+      .photos-grid {
+        flex: 1;
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .photo-slot img {
+        height: 180px;
+      }
+      
+      .wish-card {
+        padding: 30px;
+        max-width: 1200px;
+      }
+      
+      .wish-title {
+        font-size: 24px;
+      }
+      
+      .wish-area {
+        font-size: 18px;
+        min-height: 180px;
+      }
+      
+      .floating.heart {
+        font-size: 24px;
+      }
+      
+      .floating.star {
+        font-size: 20px;
+      }
+      
+      .floating.circle {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .photos-content {
+        gap: 40px;
+      }
+      
+      .photos-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .photo-slot img {
+        height: 200px;
+      }
+      
+      .hb {
+        font-size: 70px;
+      }
+    }
+    
+    @media (max-width: 880px) {
+      .home-slideshow {
+        max-width: 300px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">Anishka</div>
+      <div>My Love ❤</div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#photos">Photos</a>
+      <a href="#wish">Wish</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home">
+      <!-- Floating decorative elements -->
+      <div class="floating heart" style="top:10%;left:5%;">❤</div>
+      <div class="floating star" style="top:15%;right:8%;">★</div>
+      <div class="floating circle" style="bottom:20%;left:7%;"></div>
+      <div class="floating heart" style="bottom:15%;right:5%;">❤</div>
+      
+      <div class="hero">
+        <div class="hero-card">
+          <div style="flex:1;min-width:260px">
+            <div class="hb">Happy Birthday</div>
+            <div class="sub">To the one who makes every day brighter — wishing you love, laughs and cake! 🎂 May your special day be filled with joy and wonderful surprises.</div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown">
+              <div class="countdown-item">
+                <div class="countdown-value" id="days">0</div>
+                <div class="countdown-label">Days</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="hours">0</div>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="minutes">0</div>
+                <div class="countdown-label">Minutes</div>
+              </div>
+              <div class="countdown-item">
+                <div class="countdown-value" id="seconds">0</div>
+                <div class="countdown-label">Seconds</div>
+              </div>
+            </div>
+            
+            <div class="audio-wrap">
+              <audio id="bdayAudio" preload="none">
+                <source src="Audio.mp3.mp4" type="audio/mpeg">
+              </audio>
+              <button id="playBtn" class="play-btn">Play Birthday Song</button>
+            </div>
+          </div>
+
+          <!-- Home Section Slideshow -->
+          <div class="home-slideshow">
+            <!-- HOW TO ADD YOUR PHOTOS: -->
+            <div class="home-slide active" style="height: 500px;">
+              <img src="phto1.jpg" alt="Beautiful smile">
+              
+            </div>
+            <div class="home-slide">
+              <img src="phto2.jpg" alt="Together moments">
+              
+            </div>
+            <div class="home-slide" style="height: 500px;">
+              
+              <img src="phto3.jpg" alt="Always glowing">
+              </div>
+            <div class="home-slide" style="height: 500px;">
+              <img src="phto4.jpg" alt="Special moments">
+              
+            </div>
+            
+            <!-- Navigation arrows -->
+            <div class="home-slide-arrow prev">❮</div>
+            <div class="home-slide-arrow next">❯</div>
+            
+            <!-- Navigation dots -->
+            <div class="home-slide-nav">
+              <div class="home-slide-dot active"></div>
+              <div class="home-slide-dot"></div>
+              <div class="home-slide-dot"></div>
+              <div class="home-slide-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="photos">
+      <div class="photos-container">
+        <h2 class="photos-title">Memories of Us</h2>
+        
+        <div class="photos-content">
+          <!-- Photos Grid (Left side on desktop) -->
+          <div class="photos-grid">
+            <div class="photo-slot">
+              <img src="h1.jpg" alt="Memory 1">
+              <div class="photo-caption">Our first date ❤️</div>
+            </div>
+            <div class="photo-slot">
+              <img src="h4.JPG" alt="Memory 2">
+              <div class="photo-caption">This is what peace looks like 😌💗</div>
+            </div>
+            <div class="photo-slot">
+              <img src="h2.jpg" alt="Memory 3">
+              <div class="photo-caption">A little love story in pixels 💻💌</div>
+            </div>
+          </div>
+          
+          <!-- Video Container (Center on desktop) -->
+          <div class="video-container">
+            <div class="video-wrapper">
+              <!-- Replace with your actual birthday video -->
+              <video controls poster="g1.jpg">
+                <source src="birthday.mp3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <p class="video-caption">A special birthday message for you!</p>
+          </div>
+          
+          <!-- Photos Grid (Right side on desktop) -->
+          <div class="photos-grid">
+            <div class="photo-slot">
+              <img src="h3.jpg" alt="Memory 4">
+              <div class="photo-caption">You + Me = Forever ♾️💞</div>
+            </div>
+            <div class="photo-slot">
+              <img src="h5.DNG" alt="Memory 5">
+              <div class="photo-caption">You are my favorite place✨</div>
+            </div>
+            <div class="photo-slot">
+              <img src="h6.jpeg" alt="Memory 6">
+              <div class="photo-caption">Just being us 💕</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wish Section -->
+    <section id="wish">
+      <div class="wish-card">
+        <div class="wish-title">MY HEARTFELT WISH</div>
+        <div id="wishArea" class="wish-area" contenteditable="true">Happy Birthday my love 💕 
+Jab main yeh line likh raha hoon, toh mere chehre par ek muskaan hai, theek waise hi jaise tumhein dekh kar aati hai. Tu sirf meri girlfriend nahi, meri sabse achhi dost, mera sahara aur meri har khushi ka raaz h. Main bas yahi chahunga ki teri har wish poori ho aur yeh saal tere liye dher saari hasi aur kaamyabi lekar aaye. Aaj ka din tera hai, aur tu is duniya mein sabse zyada  khushi deserve karti h. Btw congratulation bacha tu ab teenager nhi rahi ab dheere dheere sab change ho rha h pr iska mtlb yeh nhi ki merko hi bhul jao. I am always your biggest supporter or m hamesha sth hounga tere. I love you so much bacha 💗</div>
+        <!-- Buttons removed as requested -->
+      </div>
+    </section>
+  </main>
+
+  <footer>Made with <span class="pulse">❤</span> and a little My efforts.</footer>
+
+  <script>
+    // Audio
+    const audio = document.getElementById('bdayAudio');
+    const playBtn = document.getElementById('playBtn');
+    let playing = false;
+    
+    playBtn.addEventListener('click', () => {
+      if(!playing) {
+        audio.play();
+        playBtn.textContent = 'Pause Song';
+        playBtn.style.background = 'linear-gradient(90deg, var(--accent2), var(--accent))';
+      } else {
+        audio.pause();
+        playBtn.textContent = 'Play Birthday Song';
+        playBtn.style.background = 'linear-gradient(90deg, var(--accent), var(--accent2))';
+      }
+      playing = !playing;
+    });
+
+    // Home Section Slideshow
+    const homeSlides = document.querySelectorAll('.home-slide');
+    const homeDots = document.querySelectorAll('.home-slide-dot');
+    const prevArrow = document.querySelector('.home-slide-arrow.prev');
+    const nextArrow = document.querySelector('.home-slide-arrow.next');
+    let homeSlideIndex = 0;
+    let homeSlideInterval;
+    
+    function showHomeSlide(index) {
+      homeSlides.forEach(slide => slide.classList.remove('active'));
+      homeDots.forEach(dot => dot.classList.remove('active'));
+      
+      homeSlides[index].classList.add('active');
+      homeDots[index].classList.add('active');
+      homeSlideIndex = index;
+    }
+    
+    function nextHomeSlide() {
+      let newIndex = homeSlideIndex + 1;
+      if (newIndex >= homeSlides.length) newIndex = 0;
+      showHomeSlide(newIndex);
+    }
+    
+    function prevHomeSlide() {
+      let newIndex = homeSlideIndex - 1;
+      if (newIndex < 0) newIndex = homeSlides.length - 1;
+      showHomeSlide(newIndex);
+    }
+    
+    function goToHomeSlide(index) {
+      showHomeSlide(index);
+      resetHomeSlideInterval();
+    }
+    
+    function resetHomeSlideInterval() {
+      clearInterval(homeSlideInterval);
+      homeSlideInterval = setInterval(nextHomeSlide, 4000);
+    }
+    
+    // Event listeners for home slideshow
+    nextArrow.addEventListener('click', () => {
+      nextHomeSlide();
+      resetHomeSlideInterval();
+    });
+    
+    prevArrow.addEventListener('click', () => {
+      prevHomeSlide();
+      resetHomeSlideInterval();
+    });
+    
+    homeDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToHomeSlide(index);
+      });
+    });
+    
+    // Initialize home slideshow
+    showHomeSlide(0);
+    resetHomeSlideInterval();
+
+    // Countdown Timer (to next birthday)
+    function updateCountdown() {
+      // Set the birthday date (month is 0-indexed, so 0=January, 11=December)
+      const birthday = new Date(new Date().getFullYear(), 9, 22); // October 22nd (9 is October)
+      
+      // If birthday has passed this year, set for next year
+      if (birthday < new Date()) {
+        birthday.setFullYear(birthday.getFullYear() + 1);
+      }
+      
+      const now = new Date();
+      const diff = birthday - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(255,255,255,0.95)';
+        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      } else {
+        header.style.background = 'rgba(255,255,255,0.8)';
+        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+      }
+    });
+  </script>
+</body>
+</html>
